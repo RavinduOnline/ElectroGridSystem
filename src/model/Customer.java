@@ -15,7 +15,7 @@ public class Customer {
 
 			// Provide the correct details: DBServer/DBName, username, password
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3309/empmanagment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					"jdbc:mysql://localhost:3306/ElectroGrid?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
