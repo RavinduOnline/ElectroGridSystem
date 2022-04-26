@@ -30,6 +30,15 @@ public class Customer {
 			if (con == null) {
 				return "Error while connecting to the database for inserting.";
 			}
+			// create a prepared statement
+			String query = " insert into customers(`id`, `name`, `billno`, `address`)" + " values ( ?, ?, ?, ?)";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			// binding values
+			preparedStmt.setInt(1, 0);
+			preparedStmt.setString(2, name);
+			preparedStmt.setString(3, billno);
+			preparedStmt.setString(4, address);
+
 			
 		return output;
 	}
