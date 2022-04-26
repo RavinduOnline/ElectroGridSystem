@@ -40,7 +40,14 @@ public class Poweoutageservice {
 		
 	}
 
-
+	
+	@DELETE
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deleteBill(String PoweroutageOb) {
+		
+	}
 
 	
 }

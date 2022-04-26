@@ -123,6 +123,21 @@ public class Poweroutage {
 	}
 
 	
-	
+	public String deletePoweroutag(String Id) {
+
+		String output = "";
+
+		try {
+			
+			}
+
+
+		} catch (Exception e) {
+			
+		}
+
+		return output;
+	}
+
 
 }
