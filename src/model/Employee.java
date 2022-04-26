@@ -50,5 +50,40 @@ public class Employee {
 		return output;
 	}
 
+		public String readEmployee() {
+		String output = "";
+		try {
+			Connection con = connect();
+			if (con == null) {
+				return "Error while connecting to the database for reading.";
+			}
+			// Prepare the html table to be displayed
+			output = "<table border=\"1\"><tr><th>Emp ID</th><th>Name</th><th>Age</th><th>Address</th></tr>";
+			String query = "select * from employees";
+			Statement stmt = (Statement) con.createStatement();
+			ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query);
+			// iterate through the rows in the result set
+			while (rs.next()) {
+				String Id = Integer.toString(rs.getInt("id"));
+				String Name = rs.getString("name");
+				String age = rs.getString("age");
+				String address = rs.getString("address");
+
+				output += "<tr><td>" + Id + "</td>";
+				output += "<td>" + Name + "</td>";
+				output += "<td>" + age + "</td>";
+				output += "<td>" + address + "</td>";
+
+			}
+			con.close();
+			// Complete the html table
+			output += "</table>";
+		} catch (Exception e) {
+			output = "Error while reading the Employee.";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
+
 
 }
