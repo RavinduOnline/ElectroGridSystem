@@ -51,4 +51,59 @@ public class Poweroutage {
 		return output;
 	}
 	
+
+	public String readPoweroutag() {
+		String output = "";
+		try {
+			Connection con = connect();
+			if (con == null) {
+				return "Error while connecting to the database for reading.";
+			}
+			// Prepare the html table to be displayed
+			output = "<table border=\"1\"><tr><th>Otage No</th><th>time</th><th>Date</th><th>Area</th></tr>";
+			String query = "select * from poweroutages";
+			Statement stmt = (Statement) con.createStatement();
+			ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query);
+			// iterate through the rows in the result set
+			while (rs.next()) {
+				String Id = Integer.toString(rs.getInt("id"));
+				String date = rs.getString("date");
+				String time = rs.getString("time");
+				String areacode = rs.getString("areacode");
+
+				output += "<tr><td>" + Id + "</td>";
+				output += "<td>" + time + "</td>";
+				output += "<td>" + date + "</td>";
+				output += "<td>" + areacode + "</td>";
+
+			}
+			con.close();
+			// Complete the html table
+			output += "</table>";
+		} catch (Exception e) {
+			output = "Error while reading the PowerOtage.";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
+
+	
+	public String updatePoweroutag(String time, String date,  String areacode) {
+		String output = "";
+
+		try {
+			
+			}
+
+
+		} catch (Exception e) {
+			
+		}
+
+		return output;
+	}
+
+	
+	
+
 }
