@@ -142,7 +142,15 @@ public class Customer {
 			// binding values
 			preparedStmt.setInt(1, Integer.parseInt(Id));
 
-			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Deleted successfully";
+		} catch (Exception e) {
+			output = "Error while deleting the Employee.";
+			System.err.println(e.getMessage());
+		}
 
 		return output;
 	}
