@@ -34,5 +34,18 @@ public class Employeeservice {
 
 	}
 
+		@PUT
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String updateEmployee(String EmployeeData) {
+		// Convert the input string to a JSON object
+		JsonObject ProObject = new JsonParser().parse(EmployeeData).getAsJsonObject();
+		
+		String output = EmployeeObj.updateEmployee(Id, name, age, address);
+		return output;
+	}
+
 	
 }
