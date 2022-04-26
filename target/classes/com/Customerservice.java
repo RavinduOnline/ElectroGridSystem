@@ -34,6 +34,26 @@ public class Customerservice {
 
 	}
 
+
+	@PUT
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String updateEmployee(String EmployeeData) {
+		// Convert the input string to a JSON object
+		JsonObject ProObject = new JsonParser().parse(EmployeeData).getAsJsonObject();
+
+		// Read the values from the JSON object
+		String Id = ProObject.get("id").getAsString();
+		String name = ProObject.get("name").getAsString();
+		String age = ProObject.get("age").getAsString();
+		String address = ProObject.get("address").getAsString();
+
+		String output = EmployeeObj.updateEmployee(Id, name, age, address);
+		return output;
+	}
+
 	
 	
 }
