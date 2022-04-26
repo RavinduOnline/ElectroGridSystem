@@ -35,4 +35,40 @@ public class Employeeservice {
 	}
 
 	
+	@PUT
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String updateEmployee(String EmployeeData) {
+		// Convert the input string to a JSON object
+		JsonObject ProObject = new JsonParser().parse(EmployeeData).getAsJsonObject();
+
+		// Read the values from the JSON object
+		String Id = ProObject.get("id").getAsString();
+		String name = ProObject.get("name").getAsString();
+		String age = ProObject.get("age").getAsString();
+		String address = ProObject.get("address").getAsString();
+
+		String output = EmployeeObj.updateEmployee(Id, name, age, address);
+		return output;
+	}
+
+		@DELETE
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deleteEmployee(String EmployeeData) {
+		// Convert the input string to an XML document
+		Document doc = Jsoup.parse(EmployeeData, "", Parser.xmlParser());
+
+		// Read the value from the element <itemID>
+		String Id = doc.select("id").text();
+		String output = EmployeeObj.deleteEmployee(Id);
+		return output;
+	}
+
+
+
+	
 }
