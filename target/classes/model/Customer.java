@@ -85,4 +85,19 @@ public class Customer {
 		return output;
 	}
 	
+
+	public String updateCustomer(String Id, String name, String billno, String address) {
+		String output = "";
+
+		try {
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for updating.";
+			}
+
+			
+
+		return output;
+	}
 }
