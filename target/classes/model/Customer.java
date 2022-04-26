@@ -50,6 +50,16 @@ public class Customer {
 		return output;
 	}
 
-	
+	public String readCustomer() {
+		String output = "";
+		try {
+			Connection con = connect();
+			if (con == null) {
+				return "Error while connecting to the database for reading.";
+			}
+			// Prepare the html table to be displayed
+			
+		return output;
+	}
 	
 }
