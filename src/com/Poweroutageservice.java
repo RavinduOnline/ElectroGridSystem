@@ -40,7 +40,6 @@ public class Poweoutageservice {
 
 		JsonObject ProObject = new JsonParser().parse(Poweroutageob).getAsJsonObject();
 
-		
 		String Id = ProObject.get("id").getAsString();
 		String date = ProObject.get("date").getAsString();
 		String time = ProObject.get("time").getAsString();
@@ -56,7 +55,13 @@ public class Poweoutageservice {
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String deleteBill(String PoweroutageOb) {
-		
+
+		Document doc = Jsoup.parse(PoweroutageOb, "", Parser.xmlParser());
+
+
+		String Id = doc.select("id").text();
+		String output = PoweroutageObj.deletePoweroutag(Id);
+		return output;
 	}
 
 	
