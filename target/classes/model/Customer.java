@@ -75,7 +75,13 @@ public class Customer {
 				output += "<td>" + address + "</td>";
 
 			}
-			
+			con.close();
+			// Complete the html table
+			output += "</table>";
+		} catch (Exception e) {
+			output = "Error while reading the Employee.";
+			System.err.println(e.getMessage());
+		}
 		return output;
 	}
 	
