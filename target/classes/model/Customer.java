@@ -108,7 +108,16 @@ public class Customer {
 			preparedStmt.setString(3, address);
 			preparedStmt.setInt(4, Integer.parseInt(Id));
 
-			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Updated successfully";
+		} catch (Exception e) {
+			output = "Error while updating the Employee.";
+			System.err.println(e.getMessage());
+		}
+
 		return output;
 	}
 }
