@@ -125,6 +125,37 @@ public class Bill {
 	}
 
 	
+	public String deleteBill(String Id) {
+
+		String output = "";
+
+		try {
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for deleting.";
+			}
+
+			// create a prepared statement
+			String query = "delete from bills where id=?";
+
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			// binding values
+			preparedStmt.setInt(1, Integer.parseInt(Id));
+
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Deleted successfully";
+		} catch (Exception e) {
+			output = "Error while deleting the Bill.";
+			System.err.println(e.getMessage());
+		}
+
+		return output;
+	}
 
 
 }
