@@ -35,6 +35,28 @@ public class Billservice {
 
 	}
 	
+	
+
+	@PUT
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+
+	public String updateBill(String Billob) {
+		// Convert the input string to a JSON object
+		JsonObject ProObject = new JsonParser().parse(Billob).getAsJsonObject();
+
+		// Read the values from the JSON object
+		String Id = ProObject.get("id").getAsString();
+		String billamount = ProObject.get("billamount").getAsString();
+		String date = ProObject.get("date").getAsString();
+		String time = ProObject.get("time").getAsString();
+		String cusid = ProObject.get("cusid").getAsString();
+
+
+		String output = BillObj.updateBill(billamount, date, time, cusid);
+		return output;
+	}
 
 
 	
