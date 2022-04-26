@@ -86,4 +86,41 @@ public class Employee {
 	}
 
 
+
+	public String updateEmployee(String Id, String name, String age, String address) {
+		String output = "";
+
+		try {
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for updating.";
+			}
+
+			// create a prepared statement
+			String query = "UPDATE employees SET name=?,age=?,address=? WHERE id=?";
+
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			// binding values
+
+			preparedStmt.setString(1, name);
+			preparedStmt.setString(2, age);
+			preparedStmt.setString(3, address);
+			preparedStmt.setInt(4, Integer.parseInt(Id));
+
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Updated successfully";
+		} catch (Exception e) {
+			output = "Error while updating the Employee.";
+			System.err.println(e.getMessage());
+		}
+
+		return output;
+	}
+
+
 }
