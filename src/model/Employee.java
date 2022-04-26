@@ -123,4 +123,14 @@ public class Employee {
 	}
 
 
+		public String deleteEmployee(String Id) {
+
+		String output = "";
+
+		
+
+		return output;
+	}
+
+
 }
