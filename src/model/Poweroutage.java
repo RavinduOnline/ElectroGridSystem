@@ -92,12 +92,31 @@ public class Poweroutage {
 		String output = "";
 
 		try {
-			
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for updating.";
 			}
 
+			// create a prepared statement
+			String query = "UPDATE poweroutages SET areacode=?,date=?,time=?  WHERE id=?";
 
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			// binding values
+
+			preparedStmt.setString(1, date);
+			preparedStmt.setString(2, time);
+			preparedStmt.setString(3, areacode);
+
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Updated successfully";
 		} catch (Exception e) {
-			
+			output = "Error while updating the Poweroutage.";
+			System.err.println(e.getMessage());
 		}
 
 		return output;
