@@ -37,7 +37,17 @@ public class Poweoutageservice {
 	@Produces(MediaType.TEXT_PLAIN)
 
 	public String updatePoweroutage(String Poweroutageob) {
+
+		JsonObject ProObject = new JsonParser().parse(Poweroutageob).getAsJsonObject();
+
 		
+		String Id = ProObject.get("id").getAsString();
+		String date = ProObject.get("date").getAsString();
+		String time = ProObject.get("time").getAsString();
+		String areacode = ProObject.get("areacode").getAsString();
+
+		String output = PoweroutageObj.updatePoweroutag(time, date, areacode);
+		return output;
 	}
 
 	
