@@ -96,8 +96,19 @@ public class Customer {
 				return "Error while connecting to the database for updating.";
 			}
 
-			
+			// create a prepared statement
+			String query = "UPDATE employees SET name=?,age=?,address=? WHERE id=?";
 
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			// binding values
+
+			preparedStmt.setString(1, name);
+			preparedStmt.setString(2, billno);
+			preparedStmt.setString(3, address);
+			preparedStmt.setInt(4, Integer.parseInt(Id));
+
+			
 		return output;
 	}
 }
