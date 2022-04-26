@@ -39,7 +39,14 @@ public class Customer {
 			preparedStmt.setString(3, billno);
 			preparedStmt.setString(4, address);
 
-			
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+			output = "Inserted successfully";
+		} catch (Exception e) {
+			output = "Error while inserting the Employee.";
+			System.err.println(e.getMessage());
+		}
 		return output;
 	}
 
