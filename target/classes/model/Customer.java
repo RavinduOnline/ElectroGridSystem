@@ -58,6 +58,23 @@ public class Customer {
 				return "Error while connecting to the database for reading.";
 			}
 			// Prepare the html table to be displayed
+			output = "<table border=\"1\"><tr><th>Customer ID</th><th>Name</th><th>BillNo</th><th>Address</th></tr>";
+			String query = "select * from customers";
+			Statement stmt = (Statement) con.createStatement();
+			ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query);
+			// iterate through the rows in the result set
+			while (rs.next()) {
+				String Id = Integer.toString(rs.getInt("id"));
+				String Name = rs.getString("name");
+				String billno = rs.getString("billno");
+				String address = rs.getString("address");
+
+				output += "<tr><td>" + Id + "</td>";
+				output += "<td>" + Name + "</td>";
+				output += "<td>" + billno + "</td>";
+				output += "<td>" + address + "</td>";
+
+			}
 			
 		return output;
 	}
