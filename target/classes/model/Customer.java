@@ -120,4 +120,21 @@ public class Customer {
 
 		return output;
 	}
+
+
+
+	public String deleteCustomer(String Id) {
+
+		String output = "";
+
+		try {
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for deleting.";
+			}
+
+			
+		return output;
+	}
 }
