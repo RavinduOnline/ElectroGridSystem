@@ -134,7 +134,13 @@ public class Customer {
 				return "Error while connecting to the database for deleting.";
 			}
 
+			// create a prepared statement
+			String query = "delete from customers where id=?";
+
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
 			
+
 		return output;
 	}
 }
