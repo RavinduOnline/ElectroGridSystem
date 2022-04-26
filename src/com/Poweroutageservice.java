@@ -29,25 +29,7 @@ public class Poweoutageservice {
 
 	}
 	
-	
 
-	@PUT
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-
-	public String updatePoweroutage(String Poweroutageob) {
-		
-	}
-
-	
-	@DELETE
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String deleteBill(String PoweroutageOb) {
-		
-	}
 
 	
 }
