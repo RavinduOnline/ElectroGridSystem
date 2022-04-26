@@ -105,7 +105,26 @@ public class Bill {
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
+			// binding values
 
+			preparedStmt.setString(1, billamount);
+			preparedStmt.setString(2, date);
+			preparedStmt.setString(3, time);
+
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Updated successfully";
+		} catch (Exception e) {
+			output = "Error while updating the Bill.";
+			System.err.println(e.getMessage());
+		}
+
+		return output;
+	}
+
+	
 
 
 }
